@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-""" A method that determines if a given data set represents a valid UTF-8 encoding """
+""" A method that determines if a given data set
+represents a valid UTF-8 encoding """
 
 
 def validUTF8(data):
@@ -7,7 +8,7 @@ def validUTF8(data):
 
     for byte in data:
         byte = byte & 0xFF
-        
+
         if num_bytes == 0:
             if (byte >> 5) == 0b110:
                 num_bytes = 1
@@ -18,8 +19,7 @@ def validUTF8(data):
             elif (byte >> 7):
                 return False
         else:
-                if (byte >> 6) != 0b10:
-                    return False
-                num_bytes -= 1
-
+            if (byte >> 6) != 0b10:
+                return False
+            num_bytes -= 1
     return num_bytes == 0
