@@ -1,4 +1,16 @@
 #!/usr/bin/python3
+"""
+Module for solving the coin change problem.
+
+This module provides a function to determine the minimum number of coins
+required to make up a specific total amount using given coin denominations.
+The solution uses a dynamic programming approach to find the optimal 
+coin combination.
+
+Functions:
+- makeChange(coins, total): Calculates the fewest number of coins needed
+  to meet a given total amount.
+"""
 def makeChange(coins, total):
     """
     Returns the fewest number of coins needed to make up a given total.
