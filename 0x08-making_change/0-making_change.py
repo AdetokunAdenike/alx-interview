@@ -19,9 +19,6 @@ def makeChange(coins, total):
     if total <= 0:
         return 0
 
-    if not coins:
-        return -1
-
     # Initialize dp array with large value
     dp = [float('inf')] * (total + 1)
     dp[0] = 0
