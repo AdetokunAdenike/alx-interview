@@ -37,7 +37,6 @@ def isWinner(x, nums):
     x (int): The number of rounds to play.
     nums (list): A list of integers where each integer n represents the
     upper limit of the set for a round.
-
     Returns:
     str: The name of the player who won the most rounds. If there is a tie,
     return None.
