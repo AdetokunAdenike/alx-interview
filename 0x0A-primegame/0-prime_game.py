@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """
 Module to determine the winner of the Prime Game, where two players,
-Maria and Ben,
-take turns removing primes and their multiples from a set of integers.
+Maria and Ben, take turns removing primes and their multiples from a
+set of integers.
 """
 
 
@@ -17,7 +17,7 @@ def sieve_of_eratosthenes(n):
     list: A list of boolean values where True represents a prime number.
     """
     sieve = [True] * (n + 1)
-    sieve[0] = sieve[1] = False  # 0 and 1 are not prime numbers
+    sieve[0] = sieve[1] = False
     for i in range(2, int(n ** 0.5) + 1):
         if sieve[i]:
             for j in range(i * i, n + 1, i):
@@ -44,19 +44,30 @@ def isWinner(x, nums):
     maria_wins = 0
     ben_wins = 0
 
-    # Iterate through each round and calculate the winner
     for n in nums:
-        # Generate primes up to n
         sieve = sieve_of_eratosthenes(n)
-        prime_count = sum(sieve)  # Count the number of primes
+        remaining_numbers = [True] * (n + 1)
 
-        # Determine the winner for this round based on the number of primes
-        if prime_count % 2 == 1:
-            maria_wins += 1  # Maria wins if the count is odd
+        turn = 0
+
+        while True:
+            for i in range(2, n + 1):
+                if remaining_numbers[i] and sieve[i]:
+                    prime = i
+                    break
+            else:
+                break
+
+            for j in range(prime, n + 1, prime):
+                remaining_numbers[j] = False
+
+            turn = 1 - turn
+
+        if turn == 1:
+            maria_wins += 1
         else:
-            ben_wins += 1  # Ben wins if the count is even
+            ben_wins += 1
 
-    # Return the overall winner based on the most rounds won
     if maria_wins > ben_wins:
         return "Maria"
     elif ben_wins > maria_wins:
