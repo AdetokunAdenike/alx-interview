@@ -40,6 +40,7 @@ def isWinner(x, nums):
     x (int): The number of rounds to play.
     nums (list): A list of integers where each integer n represents the
     upper limit of the set for a round.
+
     Returns:
     str: The name of the player who won the most rounds. If there is a tie,
     return None.
@@ -48,6 +49,9 @@ def isWinner(x, nums):
     ben_wins = 0
 
     for n in nums:
+        if n < 2:
+            continue  # Skip rounds where n < 2 (no primes to play with)
+
         sieve = sieve_of_eratosthenes(n)
         remaining_numbers = [True] * (n + 1)
 
