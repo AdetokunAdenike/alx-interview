@@ -16,6 +16,9 @@ def sieve_of_eratosthenes(n):
     Returns:
     list: A list of boolean values where True represents a prime number.
     """
+    if n < 2:
+        return [False] * (n + 1)
+
     sieve = [True] * (n + 1)
     sieve[0] = sieve[1] = False
     for i in range(2, int(n ** 0.5) + 1):
